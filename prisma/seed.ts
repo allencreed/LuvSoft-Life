@@ -42,7 +42,6 @@ async function main() {
         featured: true,
       },
     ],
-    skipDuplicates: true,
   });
 
   console.log("Seed complete ✨");
