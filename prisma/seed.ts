@@ -9,8 +9,10 @@ const db = new PrismaClient({
 });
 
 async function main() {
-  const category = await db.category.create({
-    data: {
+  const category = await db.category.upsert({
+    where: { slug: "apparel" },
+    update: {},
+    create: {
       name: "Apparel",
       slug: "apparel",
       description: "Clothing and accessories",
@@ -40,6 +42,7 @@ async function main() {
         featured: true,
       },
     ],
+    skipDuplicates: true,
   });
 
   console.log("Seed complete ✨");
