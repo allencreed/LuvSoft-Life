@@ -22,41 +22,50 @@ export default async function ProductsPage({
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">Products</h1>
-
-      <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
-        <a
-          href="/products"
-          className={`px-4 py-2 rounded-full text-sm border whitespace-nowrap ${
-            !params.category ? "bg-primary text-primary-foreground" : "bg-background"
-          }`}
-        >
-          All
-        </a>
-        {categories.map((cat) => (
-          <a
-            key={cat.id}
-            href={`/products?category=${cat.slug}`}
-            className={`px-4 py-2 rounded-full text-sm border whitespace-nowrap ${
-              params.category === cat.slug
-                ? "bg-primary text-primary-foreground"
-                : "bg-background"
-            }`}
-          >
-            {cat.name}
-          </a>
-        ))}
-      </div>
-
-      {products.length === 0 ? (
-        <p className="text-muted-foreground">No products found.</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((p) => (
-            <ProductCard key={p.id} product={{ ...p, images: p.images ?? null }} />
-          ))}
+      <section className="bg-canvas-parchment py-16 text-center">
+        <div className="mx-auto px-6" style={{ maxWidth: 980 }}>
+          <h1 className="text-[40px] font-semibold leading-[1.1] text-ink">Products</h1>
+          <div className="mt-6 flex flex-wrap justify-center gap-2">
+            <a
+              href="/products"
+              className={`inline-flex items-center rounded-full px-4 py-2.5 text-sm transition-all ${
+                !params.category
+                  ? "border-2 border-primary bg-white text-ink"
+                  : "border border-hairline bg-white text-ink-muted-80 hover:border-ink-muted-48"
+              }`}
+            >
+              All
+            </a>
+            {categories.map((cat) => (
+              <a
+                key={cat.id}
+                href={`/products?category=${cat.slug}`}
+                className={`inline-flex items-center rounded-full px-4 py-2.5 text-sm transition-all ${
+                  params.category === cat.slug
+                    ? "border-2 border-primary bg-white text-ink"
+                    : "border border-hairline bg-white text-ink-muted-80 hover:border-ink-muted-48"
+                }`}
+              >
+                {cat.name}
+              </a>
+            ))}
+          </div>
         </div>
-      )}
+      </section>
+
+      <section className="bg-canvas py-16">
+        <div className="mx-auto px-6" style={{ maxWidth: 1440 }}>
+          {products.length === 0 ? (
+            <p className="text-center text-muted-foreground">No products found.</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {products.map((p) => (
+                <ProductCard key={p.id} product={{ ...p, images: p.images ?? null }} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
     </div>
   );
 }

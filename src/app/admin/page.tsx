@@ -10,19 +10,19 @@ export default async function AdminDashboard() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div className="border rounded-lg p-6">
+      <h1 className="text-[28px] font-semibold leading-[1.14] text-ink mb-8">Dashboard</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="rounded-[18px] border border-hairline bg-white p-6">
           <p className="text-sm text-muted-foreground">Products</p>
-          <p className="text-3xl font-bold">{productCount}</p>
+          <p className="text-[40px] font-semibold leading-[1.1] text-ink mt-1">{productCount}</p>
         </div>
-        <div className="border rounded-lg p-6">
+        <div className="rounded-[18px] border border-hairline bg-white p-6">
           <p className="text-sm text-muted-foreground">Orders</p>
-          <p className="text-3xl font-bold">{orderCount}</p>
+          <p className="text-[40px] font-semibold leading-[1.1] text-ink mt-1">{orderCount}</p>
         </div>
-        <div className="border rounded-lg p-6">
+        <div className="rounded-[18px] border border-hairline bg-white p-6">
           <p className="text-sm text-muted-foreground">Revenue</p>
-          <p className="text-3xl font-bold">
+          <p className="text-[40px] font-semibold leading-[1.1] text-ink mt-1">
             {formatPrice(totalRevenue._sum.totalCents || 0)}
           </p>
         </div>

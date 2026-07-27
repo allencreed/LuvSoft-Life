@@ -19,9 +19,9 @@ export default async function CartPage() {
 
   if (!cart || cart.items.length === 0) {
     return (
-      <div className="text-center py-12">
-        <h1 className="text-2xl font-bold">Your Cart</h1>
-        <p className="text-muted-foreground mt-2">Your cart is empty.</p>
+      <div className="mx-auto px-6 py-20 text-center" style={{ maxWidth: 980 }}>
+        <h1 className="text-[34px] font-semibold leading-[1.47] tracking-[-0.374px] text-ink">Your Cart</h1>
+        <p className="mt-3 text-[17px] text-muted-foreground">Your cart is empty.</p>
       </div>
     );
   }
@@ -29,15 +29,15 @@ export default async function CartPage() {
   const total = cart.items.reduce((sum, item) => sum + item.priceCents * item.quantity, 0);
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
+    <div className="mx-auto px-6 py-16" style={{ maxWidth: 720 }}>
+      <h1 className="text-[34px] font-semibold leading-[1.47] tracking-[-0.374px] text-ink mb-8">Your Cart</h1>
       <div className="space-y-4">
         {cart.items.map((item) => (
           <CartItemRow key={item.id} item={item} />
         ))}
       </div>
-      <div className="mt-6 border-t pt-4">
-        <div className="flex justify-between text-lg font-bold">
+      <div className="mt-8 border-t border-hairline pt-6">
+        <div className="flex justify-between text-[17px] font-semibold">
           <span>Total</span>
           <span>{formatPrice(total)}</span>
         </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -67,7 +66,7 @@ export function ProductForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-lg space-y-4">
+    <form onSubmit={handleSubmit} className="max-w-lg space-y-5">
       <div>
         <Label htmlFor="name">Name</Label>
         <Input id="name" name="name" defaultValue={product?.name} required />
@@ -104,12 +103,16 @@ export function ProductForm({
         </Select>
       </div>
       <div className="flex items-center gap-2">
-        <input type="checkbox" name="featured" id="featured" defaultChecked={product?.featured} />
+        <input type="checkbox" name="featured" id="featured" defaultChecked={product?.featured} className="h-4 w-4 rounded border-hairline text-primary" />
         <Label htmlFor="featured">Featured product</Label>
       </div>
-      <Button type="submit" disabled={loading}>
+      <button
+        type="submit"
+        disabled={loading}
+        className="inline-flex items-center justify-center rounded-full bg-primary px-[22px] py-[11px] text-sm text-white hover:brightness-110 active:scale-[0.96] transition-all disabled:opacity-50"
+      >
         {loading ? "Saving..." : product ? "Update Product" : "Create Product"}
-      </Button>
+      </button>
     </form>
   );
 }

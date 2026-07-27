@@ -11,26 +11,36 @@ export default async function HomePage() {
 
   return (
     <div>
-      <section className="py-12 text-center">
-        <h1 className="text-4xl font-bold tracking-tight">SoftLife Store</h1>
-        <p className="mt-4 text-lg text-muted-foreground max-w-md mx-auto">
-          Premium products for a comfortable life.
-        </p>
-        <Link
-          href="/products"
-          className="mt-6 inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-        >
-          Shop All
-        </Link>
+      <section className="bg-canvas py-20 text-center">
+        <div className="mx-auto px-6" style={{ maxWidth: 980 }}>
+          <h1 className="text-[56px] font-semibold leading-[1.07] tracking-[-0.28px] text-ink">
+            Love Soft Life
+          </h1>
+          <p className="mx-auto mt-3 max-w-md text-[28px] font-normal leading-[1.14] tracking-[0.196px] text-ink">
+            Premium products for a comfortable life.
+          </p>
+          <div className="mt-4">
+            <Link
+              href="/products"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-[22px] py-[11px] text-[17px] text-white hover:brightness-110 active:scale-[0.96] transition-all"
+            >
+              Shop All
+            </Link>
+          </div>
+        </div>
       </section>
 
       {featured.length > 0 && (
-        <section>
-          <h2 className="text-2xl font-bold mb-6">Featured Products</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featured.map((p) => (
-              <ProductCard key={p.id} product={{ ...p, images: p.images ?? null }} />
-            ))}
+        <section className="bg-canvas-parchment py-20">
+          <div className="mx-auto px-6" style={{ maxWidth: 1440 }}>
+            <h2 className="text-[40px] font-semibold leading-[1.1] text-ink text-center mb-10">
+              Featured Products
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {featured.map((p) => (
+                <ProductCard key={p.id} product={{ ...p, images: p.images ?? null }} />
+              ))}
+            </div>
           </div>
         </section>
       )}

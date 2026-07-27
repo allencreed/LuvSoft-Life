@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { formatPrice } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
 import { UpdateOrderStatus } from "@/components/UpdateOrderStatus";
 
 export default async function AdminOrderDetailPage({
@@ -19,30 +18,32 @@ export default async function AdminOrderDetailPage({
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-2">Order {order.orderNumber}</h1>
-      <UpdateOrderStatus orderId={order.id} currentStatus={order.status} />
+      <h1 className="text-[28px] font-semibold leading-[1.14] text-ink mb-3">Order {order.orderNumber}</h1>
+      <div className="flex items-center gap-3 mb-4">
+        <UpdateOrderStatus orderId={order.id} currentStatus={order.status} />
+      </div>
 
-      <p className="text-sm text-muted-foreground mt-1">
+      <p className="text-sm text-muted-foreground">
         Customer: {order.user.email}
       </p>
       <p className="text-sm text-muted-foreground">
         Placed: {new Date(order.createdAt).toLocaleDateString()}
       </p>
 
-      <div className="mt-6 space-y-4">
+      <div className="mt-6 space-y-3">
         {order.items.map((item) => (
-          <div key={item.id} className="flex items-center gap-4 border rounded-lg p-4">
+          <div key={item.id} className="flex items-center gap-4 rounded-[18px] border border-hairline bg-white p-4">
             <div className="flex-1">
-              <p className="font-medium">{item.product.name}</p>
+              <p className="text-[17px] font-semibold text-ink">{item.product.name}</p>
               <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
             </div>
-            <p className="font-semibold">{formatPrice(item.priceCents * item.quantity)}</p>
+            <p className="text-[17px] font-semibold text-ink">{formatPrice(item.priceCents * item.quantity)}</p>
           </div>
         ))}
       </div>
 
-      <div className="mt-6 border-t pt-4">
-        <div className="flex justify-between font-bold text-lg">
+      <div className="mt-6 border-t border-hairline pt-6">
+        <div className="flex justify-between text-[17px] font-semibold text-ink">
           <span>Total</span>
           <span>{formatPrice(order.totalCents)}</span>
         </div>

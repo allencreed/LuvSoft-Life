@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
 export function AddToCartButton({
@@ -33,9 +32,20 @@ export function AddToCartButton({
     router.refresh();
   }
 
+  if (disabled) {
+    return (
+      <span className="inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-muted px-[22px] py-[11px] text-[17px] text-muted-foreground cursor-not-allowed">
+        Out of Stock
+      </span>
+    );
+  }
+
   return (
-    <Button onClick={handleAdd} disabled={disabled} size="lg" className="w-full sm:w-auto">
-      {disabled ? "Out of Stock" : "Add to Cart"}
-    </Button>
+    <button
+      onClick={handleAdd}
+      className="inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-primary px-[22px] py-[11px] text-[17px] text-white hover:brightness-110 active:scale-[0.96] transition-all"
+    >
+      Add to Cart
+    </button>
   );
 }

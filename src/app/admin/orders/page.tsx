@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { formatPrice } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
 
 export default async function AdminOrdersPage() {
   const orders = await db.order.findMany({
@@ -11,33 +10,35 @@ export default async function AdminOrdersPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Orders</h1>
+      <h1 className="text-[28px] font-semibold leading-[1.14] text-ink mb-6">Orders</h1>
 
-      <div className="border rounded-lg overflow-hidden">
+      <div className="rounded-[18px] border border-hairline overflow-hidden bg-white">
         <table className="w-full text-sm">
-          <thead className="bg-muted">
-            <tr>
-              <th className="text-left p-3">Order</th>
-              <th className="text-left p-3">Customer</th>
-              <th className="text-left p-3">Total</th>
-              <th className="text-left p-3">Status</th>
-              <th className="text-left p-3">Date</th>
+          <thead>
+            <tr className="border-b border-hairline bg-canvas-parchment">
+              <th className="text-left p-4 font-semibold text-ink">Order</th>
+              <th className="text-left p-4 font-semibold text-ink">Customer</th>
+              <th className="text-left p-4 font-semibold text-ink">Total</th>
+              <th className="text-left p-4 font-semibold text-ink">Status</th>
+              <th className="text-left p-4 font-semibold text-ink">Date</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
-              <tr key={order.id} className="border-t">
-                <td className="p-3">
-                  <Link href={`/admin/orders/${order.id}`} className="font-medium hover:underline">
+              <tr key={order.id} className="border-t border-hairline">
+                <td className="p-4">
+                  <Link href={`/admin/orders/${order.id}`} className="text-primary hover:underline">
                     {order.orderNumber}
                   </Link>
                 </td>
-                <td className="p-3">{order.user.email}</td>
-                <td className="p-3">{formatPrice(order.totalCents)}</td>
-                <td className="p-3">
-                  <Badge variant="outline">{order.status}</Badge>
+                <td className="p-4 text-muted-foreground">{order.user.email}</td>
+                <td className="p-4 text-ink">{formatPrice(order.totalCents)}</td>
+                <td className="p-4">
+                  <span className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs capitalize">
+                    {order.status}
+                  </span>
                 </td>
-                <td className="p-3">{new Date(order.createdAt).toLocaleDateString()}</td>
+                <td className="p-4 text-muted-foreground">{new Date(order.createdAt).toLocaleDateString()}</td>
               </tr>
             ))}
           </tbody>

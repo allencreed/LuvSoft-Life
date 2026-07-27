@@ -5,7 +5,7 @@ export default async function NewProductPage() {
   const categories = await db.category.findMany();
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">New Product</h1>
+      <h1 className="text-[28px] font-semibold leading-[1.14] text-ink mb-8">New Product</h1>
       <ProductForm categories={categories} />
     </div>
   );

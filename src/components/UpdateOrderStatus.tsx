@@ -1,8 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 export function UpdateOrderStatus({
   orderId,
@@ -20,7 +18,13 @@ export function UpdateOrderStatus({
   };
 
   const next = nextStatus[currentStatus];
-  if (!next) return <Badge variant="outline">Delivered</Badge>;
+  if (!next) {
+    return (
+      <span className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs capitalize">
+        Delivered
+      </span>
+    );
+  }
 
   async function handleUpdate() {
     await fetch(`/api/admin/orders/${orderId}`, {
@@ -32,8 +36,11 @@ export function UpdateOrderStatus({
   }
 
   return (
-    <Button onClick={handleUpdate} size="sm" variant="outline">
+    <button
+      onClick={handleUpdate}
+      className="inline-flex items-center justify-center rounded-full border border-primary bg-transparent px-[14px] py-1.5 text-sm text-primary hover:bg-primary/5 active:scale-[0.96] transition-all"
+    >
       Mark as {next.charAt(0).toUpperCase() + next.slice(1)}
-    </Button>
+    </button>
   );
 }

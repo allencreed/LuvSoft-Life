@@ -2,7 +2,6 @@ import Link from "next/link";
 import { auth0 } from "@/lib/auth0";
 import { db } from "@/lib/db";
 import { formatPrice } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
 
 export default async function OrdersPage() {
   const session = await auth0.getSession();
@@ -19,16 +18,16 @@ export default async function OrdersPage() {
     : [];
 
   const statusColors: Record<string, string> = {
-    pending: "bg-yellow-100 text-yellow-800",
-    paid: "bg-green-100 text-green-800",
-    shipped: "bg-blue-100 text-blue-800",
-    delivered: "bg-gray-100 text-gray-800",
-    cancelled: "bg-red-100 text-red-800",
+    pending: "text-yellow-800 bg-yellow-50",
+    paid: "text-green-800 bg-green-50",
+    shipped: "text-blue-800 bg-blue-50",
+    delivered: "text-gray-800 bg-gray-50",
+    cancelled: "text-red-800 bg-red-50",
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-6">My Orders</h1>
+    <div className="mx-auto px-6 py-16" style={{ maxWidth: 720 }}>
+      <h1 className="text-[34px] font-semibold leading-[1.47] tracking-[-0.374px] text-ink mb-8">My Orders</h1>
 
       {orders.length === 0 ? (
         <p className="text-muted-foreground">No orders yet.</p>
@@ -38,12 +37,12 @@ export default async function OrdersPage() {
             <Link
               key={order.id}
               href={`/account/orders/${order.id}`}
-              className="block border rounded-lg p-4 hover:bg-muted/50 transition"
+              className="block rounded-[18px] border border-hairline bg-white p-5 hover:bg-canvas-parchment transition-colors"
             >
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="font-medium">{order.orderNumber}</p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-[17px] font-semibold text-ink">{order.orderNumber}</p>
+                  <p className="text-sm text-muted-foreground mt-0.5">
                     {new Date(order.createdAt).toLocaleDateString()}
                   </p>
                   <p className="text-sm text-muted-foreground">
@@ -51,10 +50,10 @@ export default async function OrdersPage() {
                   </p>
                 </div>
                 <div className="text-right">
-                  <Badge className={statusColors[order.status] || ""} variant="outline">
-                    {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
-                  </Badge>
-                  <p className="font-bold mt-1">{formatPrice(order.totalCents)}</p>
+                  <span className={`inline-flex items-center rounded-full px-3 py-1 text-xs capitalize ${statusColors[order.status] || "bg-muted text-muted-foreground"}`}>
+                    {order.status}
+                  </span>
+                  <p className="text-[17px] font-semibold text-ink mt-1">{formatPrice(order.totalCents)}</p>
                 </div>
               </div>
             </Link>

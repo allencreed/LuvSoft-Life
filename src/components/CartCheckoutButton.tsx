@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export function CartCheckoutButton() {
@@ -19,8 +18,12 @@ export function CartCheckoutButton() {
   }
 
   return (
-    <Button onClick={handleCheckout} disabled={loading} className="w-full mt-4" size="lg">
+    <button
+      onClick={handleCheckout}
+      disabled={loading}
+      className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-primary px-[22px] py-[14px] text-[18px] font-light text-white hover:brightness-110 active:scale-[0.96] transition-all disabled:opacity-50"
+    >
       {loading ? "Redirecting..." : "Checkout"}
-    </Button>
+    </button>
   );
 }

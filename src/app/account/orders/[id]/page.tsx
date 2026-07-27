@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { auth0 } from "@/lib/auth0";
 import { db } from "@/lib/db";
 import { formatPrice } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
 
 export default async function OrderDetailPage({
   params,
@@ -25,17 +24,19 @@ export default async function OrderDetailPage({
   if (!order || order.userId !== user.id) notFound();
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-2">Order {order.orderNumber}</h1>
-      <Badge variant="outline">{order.status}</Badge>
-      <p className="text-sm text-muted-foreground mt-1">
+    <div className="mx-auto px-6 py-16" style={{ maxWidth: 720 }}>
+      <h1 className="text-[28px] font-semibold leading-[1.14] text-ink mb-1">Order {order.orderNumber}</h1>
+      <span className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs capitalize">
+        {order.status}
+      </span>
+      <p className="text-sm text-muted-foreground mt-2">
         Placed on {new Date(order.createdAt).toLocaleDateString()}
       </p>
 
-      <div className="mt-6 space-y-4">
+      <div className="mt-8 space-y-4">
         {order.items.map((item) => (
-          <div key={item.id} className="flex items-center gap-4 border rounded-lg p-4">
-            <div className="h-16 w-16 bg-muted rounded overflow-hidden flex-shrink-0">
+          <div key={item.id} className="flex items-center gap-4 rounded-[18px] border border-hairline bg-white p-4">
+            <div className="h-16 w-16 bg-muted rounded-lg overflow-hidden flex-shrink-0">
               {item.product.images && (
                 <img
                   src={item.product.images}
@@ -45,17 +46,17 @@ export default async function OrderDetailPage({
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-medium">{item.product.name}</p>
+              <p className="text-[17px] font-semibold text-ink">{item.product.name}</p>
               <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
-              <p className="text-sm">{formatPrice(item.priceCents)} each</p>
+              <p className="text-sm text-muted-foreground">{formatPrice(item.priceCents)} each</p>
             </div>
-            <p className="font-semibold">{formatPrice(item.priceCents * item.quantity)}</p>
+            <p className="text-[17px] font-semibold text-ink">{formatPrice(item.priceCents * item.quantity)}</p>
           </div>
         ))}
       </div>
 
-      <div className="mt-6 border-t pt-4">
-        <div className="flex justify-between font-bold text-lg">
+      <div className="mt-6 border-t border-hairline pt-6">
+        <div className="flex justify-between text-[17px] font-semibold text-ink">
           <span>Total</span>
           <span>{formatPrice(order.totalCents)}</span>
         </div>
