@@ -11,18 +11,25 @@ export default async function HomePage() {
 
   return (
     <div>
-      <section className="bg-canvas py-20 text-center">
-        <div className="mx-auto px-6" style={{ maxWidth: 980 }}>
-          <h1 className="text-[56px] font-semibold leading-[1.07] tracking-[-0.28px] text-ink">
+      <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-surface-black">
+        <img
+          src="/images/hero.png"
+          alt="Love Soft Life"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "center 30%" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="relative z-10 mx-auto px-6 text-center" style={{ maxWidth: 980 }}>
+          <h1 className="text-[56px] font-semibold leading-[1.07] tracking-[-0.28px] text-white">
             Love Soft Life
           </h1>
-          <p className="mx-auto mt-3 max-w-md text-[28px] font-normal leading-[1.14] tracking-[0.196px] text-ink">
+          <p className="mx-auto mt-3 max-w-md text-[28px] font-normal leading-[1.14] tracking-[0.196px] text-white/90">
             Premium products for a comfortable life.
           </p>
-          <div className="mt-4">
+          <div className="mt-6">
             <Link
               href="/products"
-              className="inline-flex items-center justify-center rounded-full bg-primary px-[22px] py-[11px] text-[17px] text-white hover:brightness-110 active:scale-[0.96] transition-all"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-[28px] py-[14px] text-[18px] font-light text-white hover:brightness-110 active:scale-[0.96] transition-all"
             >
               Shop All
             </Link>
