@@ -9,13 +9,14 @@ type Product = {
   priceCents: number;
   images: string | null;
   inventory: number;
+  featured: boolean;
   category: { name: string };
 };
 
 export function ProductCard({ product }: { product: Product }) {
   return (
     <Card>
-      <Link href={`/products/${product.slug}`}>
+      <Link href={`/products/${product.slug}`} className="relative block">
         <div className="aspect-square bg-muted">
           {product.images && (
             <img
@@ -24,6 +25,11 @@ export function ProductCard({ product }: { product: Product }) {
               className="h-full w-full object-cover"
               loading="lazy"
             />
+          )}
+          {product.featured && product.inventory > 0 && (
+            <span className="absolute top-2 left-2 inline-flex items-center rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-semibold text-white">
+              Featured
+            </span>
           )}
         </div>
       </Link>

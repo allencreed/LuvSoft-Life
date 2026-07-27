@@ -1,15 +1,36 @@
+import type { Metadata } from "next";
 import { db } from "@/lib/db";
 import { ProductCard } from "@/components/ProductCard";
+
+export const metadata: Metadata = {
+  title: "Products - Love Soft Life",
+  description: "Browse our collection of premium products",
+  openGraph: {
+    title: "Products - Love Soft Life",
+    description: "Browse our collection of premium products",
+    type: "website",
+    siteName: "Love Soft Life",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Products - Love Soft Life",
+    description: "Browse our collection of premium products",
+  },
+};
 
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ category?: string; search?: string }>;
 }) {
   const params = await searchParams;
-  const where = params.category
-    ? { category: { slug: params.category } }
-    : {};
+  const where: Record<string, unknown> = {};
+  if (params.category) {
+    where.category = { slug: params.category };
+  }
+  if (params.search) {
+    where.name = { contains: params.search };
+  }
 
   const [products, categories] = await Promise.all([
     db.product.findMany({

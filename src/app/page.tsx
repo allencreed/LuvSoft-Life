@@ -1,6 +1,24 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { ProductCard } from "@/components/ProductCard";
+
+export const metadata: Metadata = {
+  title: "Love Soft Life",
+  description: "Premium products for a comfortable life.",
+  openGraph: {
+    title: "Love Soft Life",
+    description: "Premium products for a comfortable life.",
+    type: "website",
+    siteName: "Love Soft Life",
+    url: "https://lovesoftlife.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Love Soft Life",
+    description: "Premium products for a comfortable life.",
+  },
+};
 
 export default async function HomePage() {
   const featured = await db.product.findMany({
@@ -17,6 +35,7 @@ export default async function HomePage() {
           alt="Love Soft Life"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: "center 30%" }}
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         <div className="relative z-10 mx-auto px-6 text-center" style={{ maxWidth: 980 }}>

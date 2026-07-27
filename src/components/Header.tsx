@@ -32,6 +32,18 @@ export async function Header() {
           <Link href="/products" className="text-white/80 hover:text-white transition-colors">
             Products
           </Link>
+          <form
+            action="/products"
+            method="GET"
+            className="hidden sm:block"
+          >
+            <input
+              type="text"
+              name="search"
+              placeholder="Search..."
+              className="w-32 rounded-full bg-white/10 px-3 py-1 text-xs text-white placeholder:text-white/50 outline-none focus:bg-white/20 transition-colors"
+            />
+          </form>
           <Link href="/cart" className="relative text-white/80 hover:text-white transition-colors">
             Cart
             {cartCount > 0 && (
