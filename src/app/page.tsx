@@ -39,10 +39,10 @@ export default async function HomePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         <div className="relative z-10 mx-auto px-6 text-center" style={{ maxWidth: 980 }}>
-          <h1 className="text-[56px] font-semibold leading-[1.07] tracking-[-0.28px] text-white">
+          <h1 className="text-[32px] sm:text-[44px] lg:text-[56px] font-light leading-[1.07] tracking-[-0.28px] text-white">
             Love Soft Life
           </h1>
-          <p className="mx-auto mt-3 max-w-md text-[28px] font-normal leading-[1.14] tracking-[0.196px] text-white/90">
+          <p className="mx-auto mt-3 max-w-md text-[20px] sm:text-[24px] lg:text-[28px] font-light leading-[1.14] tracking-[0.196px] text-white/90">
             Premium products for a comfortable life.
           </p>
           <div className="mt-6">
@@ -59,7 +59,7 @@ export default async function HomePage() {
       {featured.length > 0 && (
         <section className="bg-canvas-parchment py-20">
           <div className="mx-auto px-6" style={{ maxWidth: 1440 }}>
-            <h2 className="text-[40px] font-semibold leading-[1.1] text-ink text-center mb-10">
+            <h2 className="text-[28px] sm:text-[34px] lg:text-[40px] font-normal leading-[1.1] text-ink text-center mb-10">
               Featured Products
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

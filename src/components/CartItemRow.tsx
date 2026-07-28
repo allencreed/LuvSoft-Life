@@ -55,7 +55,7 @@ export function CartItemRow({ item }: CartItemRowProps) {
         </div>
       </Link>
       <div className="flex-1 min-w-0">
-        <Link href={`/products/${item.product.slug}`} className="text-[17px] font-semibold text-ink hover:underline line-clamp-1">
+        <Link href={`/products/${item.product.slug}`} className="text-[17px] font-normal text-ink hover:underline line-clamp-1">
           {item.product.name}
         </Link>
         <div className="flex items-center gap-2 mt-1">
@@ -68,7 +68,7 @@ export function CartItemRow({ item }: CartItemRowProps) {
             >
               <Minus className="h-3 w-3" />
             </button>
-            <span className="w-6 text-center text-[13px] font-medium text-ink tabular-nums select-none">
+            <span className="w-6 text-center text-[13px] font-normal text-ink tabular-nums select-none">
               {qty}
             </span>
             <button
@@ -80,7 +80,7 @@ export function CartItemRow({ item }: CartItemRowProps) {
             </button>
           </div>
         </div>
-        <p className="text-[17px] font-semibold mt-1">{formatPrice(item.priceCents * qty)}</p>
+        <p className="text-[17px] font-normal mt-1">{formatPrice(item.priceCents * qty)}</p>
       </div>
       <Button variant="ghost" onClick={handleRemove} className="text-sm">
         Remove

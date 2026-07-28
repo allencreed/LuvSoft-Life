@@ -45,7 +45,7 @@ export default async function ProductsPage({
     <div>
       <section className="bg-canvas-parchment py-16 text-center">
         <div className="mx-auto px-6" style={{ maxWidth: 980 }}>
-          <h1 className="text-[40px] font-semibold leading-[1.1] text-ink">Products</h1>
+          <h1 className="text-[28px] sm:text-[34px] lg:text-[40px] font-normal leading-[1.1] text-ink">Products</h1>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
             <a
               href="/products"

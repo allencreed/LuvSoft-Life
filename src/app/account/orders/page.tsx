@@ -27,7 +27,7 @@ export default async function OrdersPage() {
 
   return (
     <div className="mx-auto px-6 py-16" style={{ maxWidth: 720 }}>
-      <h1 className="text-[34px] font-semibold leading-[1.47] tracking-[-0.374px] text-ink mb-8">My Orders</h1>
+      <h1 className="text-[24px] sm:text-[28px] lg:text-[34px] font-normal leading-[1.47] tracking-[-0.374px] text-ink mb-8">My Orders</h1>
 
       {orders.length === 0 ? (
         <p className="text-muted-foreground">No orders yet.</p>
@@ -41,7 +41,7 @@ export default async function OrdersPage() {
             >
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-[17px] font-semibold text-ink">{order.orderNumber}</p>
+                  <p className="text-[17px] font-normal text-ink">{order.orderNumber}</p>
                   <p className="text-sm text-muted-foreground mt-0.5">
                     {new Date(order.createdAt).toLocaleDateString()}
                   </p>
@@ -53,7 +53,7 @@ export default async function OrdersPage() {
                   <span className={`inline-flex items-center rounded-full px-3 py-1 text-xs capitalize ${statusColors[order.status] || "bg-muted text-muted-foreground"}`}>
                     {order.status}
                   </span>
-                  <p className="text-[17px] font-semibold text-ink mt-1">{formatPrice(order.totalCents)}</p>
+                  <p className="text-[17px] font-normal text-ink mt-1">{formatPrice(order.totalCents)}</p>
                 </div>
               </div>
             </Link>

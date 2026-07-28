@@ -57,7 +57,7 @@ export function AddToCartButton({
         >
           <Minus className="h-3.5 w-3.5" />
         </button>
-        <span className="w-8 text-center text-[15px] font-medium text-ink tabular-nums select-none">
+        <span className="w-8 text-center text-[15px] font-normal text-ink tabular-nums select-none">
           {quantity}
         </span>
         <button

@@ -26,7 +26,7 @@ const faqs = [
 export default function FAQPage() {
   return (
     <div className="mx-auto px-6 py-16" style={{ maxWidth: 720 }}>
-      <h1 className="text-[34px] font-semibold tracking-[-0.374px] text-ink">
+      <h1 className="text-[24px] sm:text-[28px] lg:text-[34px] font-normal tracking-[-0.374px] text-ink">
         Frequently Asked Questions
       </h1>
       <dl className="mt-6 space-y-8">

@@ -20,7 +20,7 @@ export default async function CartPage() {
   if (!cart || cart.items.length === 0) {
     return (
       <div className="mx-auto px-6 py-20 text-center" style={{ maxWidth: 980 }}>
-        <h1 className="text-[34px] font-semibold leading-[1.47] tracking-[-0.374px] text-ink">Your Cart</h1>
+        <h1 className="text-[24px] sm:text-[28px] lg:text-[34px] font-normal leading-[1.47] tracking-[-0.374px] text-ink">Your Cart</h1>
         <p className="mt-3 text-[17px] text-muted-foreground">Your cart is empty.</p>
       </div>
     );
@@ -30,14 +30,14 @@ export default async function CartPage() {
 
   return (
     <div className="mx-auto px-6 py-16" style={{ maxWidth: 720 }}>
-      <h1 className="text-[34px] font-semibold leading-[1.47] tracking-[-0.374px] text-ink mb-8">Your Cart</h1>
+      <h1 className="text-[24px] sm:text-[28px] lg:text-[34px] font-normal leading-[1.47] tracking-[-0.374px] text-ink mb-8">Your Cart</h1>
       <div className="space-y-4">
         {cart.items.map((item) => (
           <CartItemRow key={item.id} item={item} />
         ))}
       </div>
       <div className="mt-8 border-t border-hairline pt-6">
-        <div className="flex justify-between text-[17px] font-semibold">
+        <div className="flex justify-between text-[17px] font-normal">
           <span>Total</span>
           <span>{formatPrice(total)}</span>
         </div>

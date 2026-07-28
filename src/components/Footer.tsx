@@ -45,7 +45,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {columns.map((col) => (
             <div key={col.heading}>
-              <h4 className="text-sm font-semibold text-ink" style={{ fontSize: 14, fontWeight: 600 }}>
+              <h4 className="text-sm font-normal text-ink" style={{ fontSize: 14 }}>
                 {col.heading}
               </h4>
               <ul className="mt-3 space-y-1">

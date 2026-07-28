@@ -76,10 +76,10 @@ export default async function ProductDetailPage({ params }: Props) {
 
         <div className="pt-2">
           <p className="text-xs text-muted-foreground uppercase tracking-wide">{product.category.name}</p>
-          <h1 className="text-[34px] font-semibold leading-[1.47] tracking-[-0.374px] text-ink mt-1">
+          <h1 className="text-[24px] sm:text-[28px] lg:text-[34px] font-normal leading-[1.47] tracking-[-0.374px] text-ink mt-1">
             {product.name}
           </h1>
-          <p className="mt-4 text-[17px] text-ink font-semibold">{formatPrice(product.priceCents)}</p>
+          <p className="mt-4 text-[17px] text-ink font-normal">{formatPrice(product.priceCents)}</p>
           <p className="mt-1 text-sm text-muted-foreground">Free shipping on orders over $50</p>
           <p className="mt-4 text-[17px] text-ink leading-relaxed">
             {product.description}

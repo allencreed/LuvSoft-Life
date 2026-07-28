@@ -36,7 +36,7 @@ export function ProductCard({ product }: { product: Product }) {
       <CardContent className="pt-4 pb-3 px-5">
         <p className="text-xs text-muted-foreground uppercase tracking-wide">{product.category.name}</p>
         <Link href={`/products/${product.slug}`}>
-          <h3 className="mt-0.5 text-[17px] font-semibold leading-tight text-ink">{product.name}</h3>
+          <h3 className="mt-0.5 text-[17px] font-normal leading-tight text-ink">{product.name}</h3>
         </Link>
         <p className="mt-1 text-[17px] text-ink">{formatPrice(product.priceCents)}</p>
       </CardContent>

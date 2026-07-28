@@ -25,7 +25,7 @@ export default async function OrderDetailPage({
 
   return (
     <div className="mx-auto px-6 py-16" style={{ maxWidth: 720 }}>
-      <h1 className="text-[28px] font-semibold leading-[1.14] text-ink mb-1">Order {order.orderNumber}</h1>
+      <h1 className="text-[22px] sm:text-[24px] lg:text-[28px] font-normal leading-[1.14] text-ink mb-1">Order {order.orderNumber}</h1>
       <span className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs capitalize">
         {order.status}
       </span>
@@ -46,17 +46,17 @@ export default async function OrderDetailPage({
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-[17px] font-semibold text-ink">{item.product.name}</p>
+              <p className="text-[17px] font-normal text-ink">{item.product.name}</p>
               <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
               <p className="text-sm text-muted-foreground">{formatPrice(item.priceCents)} each</p>
             </div>
-            <p className="text-[17px] font-semibold text-ink">{formatPrice(item.priceCents * item.quantity)}</p>
+            <p className="text-[17px] font-normal text-ink">{formatPrice(item.priceCents * item.quantity)}</p>
           </div>
         ))}
       </div>
 
       <div className="mt-6 border-t border-hairline pt-6">
-        <div className="flex justify-between text-[17px] font-semibold text-ink">
+        <div className="flex justify-between text-[17px] font-normal text-ink">
           <span>Total</span>
           <span>{formatPrice(order.totalCents)}</span>
         </div>
