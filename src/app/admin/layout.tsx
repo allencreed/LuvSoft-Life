@@ -2,11 +2,13 @@ import { auth0 } from "@/lib/auth0";
 import Link from "next/link";
 import { db } from "@/lib/db";
 
-export default async function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const NAV_ITEMS = [
+  { href: "/admin", label: "Dashboard" },
+  { href: "/admin/products", label: "Products" },
+  { href: "/admin/orders", label: "Orders" },
+];
+
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await auth0.getSession();
   let isAdmin = false;
 
@@ -25,19 +27,22 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="mx-auto px-6 py-12" style={{ maxWidth: 1200 }}>
-      <nav className="flex gap-6 mb-8 pb-4 border-b border-hairline">
-        <Link href="/admin" className="text-sm font-medium text-primary hover:underline">
-          Dashboard
-        </Link>
-        <Link href="/admin/products" className="text-sm text-ink-muted-48 hover:text-ink transition-colors">
-          Products
-        </Link>
-        <Link href="/admin/orders" className="text-sm text-ink-muted-48 hover:text-ink transition-colors">
-          Orders
-        </Link>
+    <div className="mx-auto px-6 py-12 flex gap-10" style={{ maxWidth: 1200 }}>
+      <nav className="w-44 shrink-0">
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-4">Admin</p>
+        <div className="space-y-1">
+          {NAV_ITEMS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="flex items-center gap-2.5 px-3 py-2 text-sm rounded-lg text-muted-foreground hover:text-ink hover:bg-canvas-parchment transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
       </nav>
-      {children}
+      <main className="flex-1 min-w-0">{children}</main>
     </div>
   );
 }

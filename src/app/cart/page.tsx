@@ -2,8 +2,8 @@ import { auth0 } from "@/lib/auth0";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { formatPrice } from "@/lib/utils";
-import { CartCheckoutButton } from "@/components/CartCheckoutButton";
 import { CartItemRow } from "@/components/CartItemRow";
+import { CartSummary } from "@/components/CartSummary";
 
 export default async function CartPage() {
   const session = await auth0.getSession();
@@ -36,13 +36,7 @@ export default async function CartPage() {
           <CartItemRow key={item.id} item={item} />
         ))}
       </div>
-      <div className="mt-8 border-t border-hairline pt-6">
-        <div className="flex justify-between text-[17px] font-normal">
-          <span>Total</span>
-          <span>{formatPrice(total)}</span>
-        </div>
-        <CartCheckoutButton />
-      </div>
+      <CartSummary total={total} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { db } from "@/lib/db";
 import { ProductCard } from "@/components/ProductCard";
+import { breadcrumbSchema } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Products - Love Soft Life",
@@ -41,8 +42,17 @@ export default async function ProductsPage({
     db.category.findMany(),
   ]);
 
+  const productsBreadcrumb = breadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Products", url: "/products" },
+  ]);
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productsBreadcrumb) }}
+      />
       <section className="bg-canvas-parchment py-16 text-center">
         <div className="mx-auto px-6" style={{ maxWidth: 980 }}>
           <h1 className="text-[28px] sm:text-[34px] lg:text-[40px] font-normal leading-[1.1] text-ink">Products</h1>

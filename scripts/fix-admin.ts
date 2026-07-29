@@ -35,7 +35,7 @@ async function main() {
     await db.user.create({
       data: {
         auth0Id,
-        email: session.user.email,
+        email: session.user.email ?? `${auth0Id}@placeholder.com`,
         name: session.user.name ?? null,
         role: "admin",
       },

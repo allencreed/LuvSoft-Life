@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
+import { parseImages } from "@/lib/images";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 
@@ -47,7 +48,7 @@ export function CartItemRow({ item }: CartItemRowProps) {
         <div className="h-20 w-20 bg-muted rounded-lg overflow-hidden flex-shrink-0">
           {item.product.images && (
             <img
-              src={item.product.images}
+               src={parseImages(item.product.images)[0]}
               alt={item.product.name}
               className="h-full w-full object-cover"
             />

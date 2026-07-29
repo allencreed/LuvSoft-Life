@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { ProductCard } from "@/components/ProductCard";
+import { breadcrumbSchema } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Love Soft Life",
@@ -27,8 +28,14 @@ export default async function HomePage() {
     take: 8,
   });
 
+  const homeBreadcrumb = breadcrumbSchema([{ name: "Home", url: "/" }]);
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeBreadcrumb) }}
+      />
       <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-surface-black">
         <img
           src="/images/hero.png"

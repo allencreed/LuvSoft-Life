@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { auth0 } from "@/lib/auth0";
 import { db } from "@/lib/db";
 import { formatPrice } from "@/lib/utils";
+import { parseImages } from "@/lib/images";
 
 export default async function OrderDetailPage({
   params,
@@ -39,7 +40,7 @@ export default async function OrderDetailPage({
             <div className="h-16 w-16 bg-muted rounded-lg overflow-hidden flex-shrink-0">
               {item.product.images && (
                 <img
-                  src={item.product.images}
+                   src={parseImages(item.product.images)[0]}
                   alt={item.product.name}
                   className="h-full w-full object-cover"
                 />

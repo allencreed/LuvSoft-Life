@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth0 } from "@/lib/auth0";
 import { db } from "@/lib/db";
 import { stripe } from "@/lib/stripe";
+import { parseImages } from "@/lib/images";
 
 export async function POST(req: NextRequest) {
   const session = await auth0.getSession(req);
@@ -49,7 +50,7 @@ export async function POST(req: NextRequest) {
         currency: "usd",
         product_data: {
           name: item.product.name,
-          images: item.product.images ? [item.product.images] : [],
+          images: item.product.images ? parseImages(item.product.images) : [],
         },
         unit_amount: item.priceCents,
       },

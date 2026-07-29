@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatPrice } from "@/lib/utils";
+import { parseImages } from "@/lib/images";
 
 type Product = {
   id: string;
@@ -20,7 +21,7 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="aspect-square bg-muted">
           {product.images && (
             <img
-              src={product.images}
+              src={parseImages(product.images)[0]}
               alt={product.name}
               className="h-full w-full object-cover"
               loading="lazy"
